@@ -25,8 +25,8 @@ class bxilluminate extends CModule {
             $this->MODULE_VERSION = $arModuleVersion["VERSION"];
             $this->MODULE_VERSION_DATE = $arModuleVersion["VERSION_DATE"];
         }
-        $this->MODULE_NAME = Loc::getMessage("MODULE_NAME_ILLUMINATE");
-        $this->MODULE_DESCRIPTION = Loc::getMessage("MODULE_DESCRIPTION_ILLUMINATE");
+        $this->MODULE_NAME = Loc::getMessage("MODULE_NAME_BXILLUMINATE");
+        $this->MODULE_DESCRIPTION = Loc::getMessage("MODULE_DESCRIPTION_BXILLUMINATE");
     }
 
     public function InstallEvents() {
@@ -60,9 +60,11 @@ class bxilluminate extends CModule {
     }
 
     public function DoUninstall() {
+        
         Loader::includeModule($this->MODULE_ID);
         $this->UnInstallEvents();
         ModuleManager::unRegisterModule($this->MODULE_ID);
         return true;
+        
     }
 }
