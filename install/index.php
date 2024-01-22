@@ -3,7 +3,8 @@
 use Bitrix\Main\{
     Loader,
     Localization\Loc,
-    ModuleManager
+    ModuleManager,
+    EventManager
 };
 
 class bxilluminate extends CModule {
@@ -28,6 +29,17 @@ class bxilluminate extends CModule {
         $this->MODULE_DESCRIPTION = Loc::getMessage("MODULE_DESCRIPTION_ILLUMINATE");
     }
 
+    public function InstallEvents() {
+        EventManager::getInstance()->registerEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'BxIlluminateConnector', 'Init');
+        return true;
+    }
+
+    public function UnInstallEvents() {
+        parent::UnInstallEvents();
+        EventManager::getInstance()->unRegisterEventHandler('main', 'OnBeforeProlog', $this->MODULE_ID, 'BxIlluminateConnector', 'Init');
+        return true;
+    }
+
     public function DoInstall() {
 
         $version = phpversion();
@@ -38,16 +50,18 @@ class bxilluminate extends CModule {
             global $APPLICATION;
             $APPLICATION->IncludeAdminFile('', $_SERVER["DOCUMENT_ROOT"] . "/local/modules/bxilluminate/install/err.php");
         }
-
-
+ 
         ModuleManager::registerModule($this->MODULE_ID);
         Loader::includeModule($this->MODULE_ID);
+
+        $this->InstallEvents();
 
         return true;
     }
 
     public function DoUninstall() {
         Loader::includeModule($this->MODULE_ID);
+        $this->UnInstallEvents();
         ModuleManager::unRegisterModule($this->MODULE_ID);
         return true;
     }

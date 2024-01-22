@@ -5,9 +5,7 @@ Illuminate - лучший друг разработчика на Bitrix ;)
 git clone https://github.com/kudin/bxilluminate.git bxilluminate</pre>
  
 <p>Usage:</p>
-
-    \Bitrix\Main\Loader::includeModule('bxilluminate');
-    
+ 
     class User extends Illuminate\Database\Eloquent\Model {
     
         protected $table = 'b_user';
