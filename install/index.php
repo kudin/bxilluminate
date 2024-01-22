@@ -29,6 +29,17 @@ class bxilluminate extends CModule {
     }
 
     public function DoInstall() {
+
+        $version = phpversion();
+
+        $result = version_compare($version, '8.0.0');
+
+        if ($result == -1) {
+            global $APPLICATION;
+            $APPLICATION->IncludeAdminFile('', $_SERVER["DOCUMENT_ROOT"] . "/local/modules/bxilluminate/install/err.php");
+        }
+
+
         ModuleManager::registerModule($this->MODULE_ID);
         Loader::includeModule($this->MODULE_ID);
 
