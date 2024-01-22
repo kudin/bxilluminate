@@ -1,17 +1,9 @@
 <?php
 
 class BxIlluminateConnector {
-
-    private static $inited = false;
  
     public static function Init() {
-
-        if(self::$inited) {
-            return;
-        }
-        
-        self::$inited = true;
-        
+ 
         if (file_exists($_SERVER["DOCUMENT_ROOT"] . '/local/modules/bxilluminate/vendor/autoload.php')) {
             require_once($_SERVER["DOCUMENT_ROOT"] . "/local/modules/bxilluminate/vendor/autoload.php");
         }
