@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 class BxIlluminateConnector {
  
     public static function Init() {
@@ -10,7 +12,7 @@ class BxIlluminateConnector {
  
         $connection = self::GetConnection();
 
-        $capsule = new Illuminate\Database\Capsule\Manager;
+        $capsule = new Capsule();
         $capsule->addConnection($connection);
         $capsule->setAsGlobal();
         $capsule->bootEloquent();
@@ -31,4 +33,5 @@ class BxIlluminateConnector {
         ];
         return $mess;
     }
+    
 } 
