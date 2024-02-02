@@ -3,7 +3,7 @@ Eloquent - лучший друг разработчика на Bitrix ;)
 <p>Установка:</p>
 <pre>cd local/modules/ 
 git clone https://github.com/kudin/bxilluminate.git bxilluminate</pre>
- 
+
 
 
 <p>если сервер на bitrixvm - включаем phar и pdo_mysql:</p>
@@ -14,7 +14,7 @@ systemctl restart httpd</pre>
 
 
 
-<p>Использование :</p>
+<p>Пример использования :</p>
 
 <pre>use Illuminate\Database\Eloquent\Model;
  
