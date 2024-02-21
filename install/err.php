@@ -5,7 +5,7 @@ if (!check_bitrix_sessid())
 echo CAdminMessage::ShowMessage([
     "TYPE" => "ERROR",
     "MESSAGE" => 'Модуль не может быть установлен на текущую конфигурацию',
-    "DETAILS" => 'php должен быть 8',
+    "DETAILS" => 'Версия php должна быть >= 8',
     "HTML" => true,
 ]);
 ?>
