@@ -1,7 +1,7 @@
 Illuminate - лучший друг разработчика на Bitrix ;)
 
 <p>Требования:</p>
-<pre>php ^8</pre>
+<pre>php >=8</pre>
 
 <p>Установка:</p>
 <pre>cd local/modules/ 
